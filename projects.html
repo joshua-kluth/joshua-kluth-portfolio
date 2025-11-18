@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Engineering projects by Your Name Here - Aerospace and Electrical Engineering projects">
+    <title>Projects | Your Name Here</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">Your Name Here</a>
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="fade-in">Projects</h1>
+                <p class="page-subtitle fade-in">A collection of technical engineering work spanning aerospace systems, embedded electronics, control systems, and simulation.</p>
+            </div>
+        </section>
+
+        <!-- Filter Controls -->
+        <section class="projects-filter">
+            <div class="container">
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="personal">Personal</button>
+                    <button class="filter-btn" data-filter="university">University</button>
+                    <button class="filter-btn" data-filter="other">Other</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="projects-grid-section">
+            <div class="container">
+                <div class="projects-grid">
+                    <!-- Project Card 1 -->
+                    <article class="project-card" data-category="university">
+                        <div class="project-thumbnail">
+                            <!-- Replace with actual project image -->
+                            <div class="placeholder-image-rect" aria-label="Autonomous drone navigation system">
+                                <svg width="100%" height="100%" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="400" height="250" fill="#f0f0f0"/>
+                                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Project Image</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">University</span>
+                            <h3 class="project-title">Autonomous Drone Navigation System</h3>
+                            <p class="project-description">Developed a vision-based navigation system for quadcopter drones using computer vision and PID control algorithms for obstacle avoidance.</p>
+                            <div class="project-tags">
+                                <span class="tag">Aerospace</span>
+                                <span class="tag">Control Systems</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">Computer Vision</span>
+                            </div>
+                            <a href="project-template.html" class="project-link">View Project →</a>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 2 -->
+                    <article class="project-card" data-category="personal">
+                        <div class="project-thumbnail">
+                            <div class="placeholder-image-rect" aria-label="Power monitoring system">
+                                <svg width="100%" height="100%" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="400" height="250" fill="#f0f0f0"/>
+                                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Project Image</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Personal</span>
+                            <h3 class="project-title">Smart Power Monitoring System</h3>
+                            <p class="project-description">Designed embedded system for real-time power consumption monitoring with wireless data transmission and mobile app visualization.</p>
+                            <div class="project-tags">
+                                <span class="tag">Electrical</span>
+                                <span class="tag">Embedded</span>
+                                <span class="tag">IoT</span>
+                                <span class="tag">C++</span>
+                            </div>
+                            <a href="project-template.html" class="project-link">View Project →</a>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 3 -->
+                    <article class="project-card" data-category="university">
+                        <div class="project-thumbnail">
+                            <div class="placeholder-image-rect" aria-label="Rocket trajectory simulation">
+                                <svg width="100%" height="100%" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="400" height="250" fill="#f0f0f0"/>
+                                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Project Image</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">University</span>
+                            <h3 class="project-title">Rocket Trajectory Simulation & Optimization</h3>
+                            <p class="project-description">Created MATLAB simulation for model rocket trajectory optimization considering drag, thrust curves, and atmospheric conditions.</p>
+                            <div class="project-tags">
+                                <span class="tag">Aerospace</span>
+                                <span class="tag">Simulation</span>
+                                <span class="tag">MATLAB</span>
+                                <span class="tag">Optimization</span>
+                            </div>
+                            <a href="project-template.html" class="project-link">View Project →</a>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 4 -->
+                    <article class="project-card" data-category="personal">
+                        <div class="project-thumbnail">
+                            <div class="placeholder-image-rect" aria-label="Signal processing filter">
+                                <svg width="100%" height="100%" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="400" height="250" fill="#f0f0f0"/>
+                                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Project Image</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Personal</span>
+                            <h3 class="project-title">Digital Signal Processing Filter Design</h3>
+                            <p class="project-description">Implemented custom FIR and IIR filters for audio processing applications with real-time performance on embedded hardware.</p>
+                            <div class="project-tags">
+                                <span class="tag">Electrical</span>
+                                <span class="tag">Signal Processing</span>
+                                <span class="tag">C</span>
+                                <span class="tag">Embedded</span>
+                            </div>
+                            <a href="project-template.html" class="project-link">View Project →</a>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 5 -->
+                    <article class="project-card" data-category="university">
+                        <div class="project-thumbnail">
+                            <div class="placeholder-image-rect" aria-label="Satellite attitude control">
+                                <svg width="100%" height="100%" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="400" height="250" fill="#f0f0f0"/>
+                                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Project Image</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">University</span>
+                            <h3 class="project-title">CubeSat Attitude Control System</h3>
+                            <p class="project-description">Designed attitude determination and control system for small satellite using reaction wheels and magnetorquers.</p>
+                            <div class="project-tags">
+                                <span class="tag">Aerospace</span>
+                                <span class="tag">Control Systems</span>
+                                <span class="tag">MATLAB</span>
+                                <span class="tag">Simulation</span>
+                            </div>
+                            <a href="project-template.html" class="project-link">View Project →</a>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 6 -->
+                    <article class="project-card" data-category="other">
+                        <div class="project-thumbnail">
+                            <div class="placeholder-image-rect" aria-label="PCB design">
+                                <svg width="100%" height="100%" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="400" height="250" fill="#f0f0f0"/>
+                                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Project Image</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Other</span>
+                            <h3 class="project-title">Custom PCB Design for Sensor Array</h3>
+                            <p class="project-description">Multi-layer PCB design for distributed sensor network with low-power considerations and signal integrity optimization.</p>
+                            <div class="project-tags">
+                                <span class="tag">Electrical</span>
+                                <span class="tag">PCB Design</span>
+                                <span class="tag">Hardware</span>
+                                <span class="tag">Sensors</span>
+                            </div>
+                            <a href="project-template.html" class="project-link">View Project →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Your Name Here. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">LinkedIn</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

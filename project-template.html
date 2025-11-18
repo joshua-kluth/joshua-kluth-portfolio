@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project details - Your Name Here Engineering Portfolio">
+    <title>Project Name | Your Name Here</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">Your Name Here</a>
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Project Header -->
+        <section class="project-header">
+            <div class="container">
+                <a href="projects.html" class="back-link">← Back to Projects</a>
+                <h1 class="fade-in">Autonomous Drone Navigation System</h1>
+                <p class="project-subtitle fade-in">Vision-based obstacle avoidance for quadcopter UAVs</p>
+                
+                <div class="project-meta fade-in">
+                    <div class="meta-item">
+                        <span class="meta-label">Type</span>
+                        <span class="meta-value">University Project</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">Lead Designer & Developer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Tools</span>
+                        <span class="meta-value">Python, OpenCV, ROS, MATLAB, Simulink</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Duration</span>
+                        <span class="meta-value">September 2023 – May 2024</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview -->
+        <section class="project-section">
+            <div class="container-narrow">
+                <h2 class="reveal-on-scroll">Overview</h2>
+                <p class="reveal-on-scroll">This project involved designing and implementing an autonomous navigation system for a quadcopter drone capable of real-time obstacle detection and avoidance in unknown environments. The system integrates computer vision algorithms with classical control theory to enable safe autonomous flight through complex indoor and outdoor spaces.</p>
+            </div>
+        </section>
+
+        <!-- Context & Problem -->
+        <section class="project-section bg-light">
+            <div class="container-narrow">
+                <h2 class="reveal-on-scroll">Context & Problem</h2>
+                <p class="reveal-on-scroll">Traditional drone navigation systems rely heavily on GPS and pre-mapped environments, limiting their usefulness in GPS-denied areas and dynamic environments. The goal was to develop a vision-based system that could operate autonomously without prior environmental knowledge.</p>
+                
+                <h3 class="reveal-on-scroll">Key Challenges & Constraints</h3>
+                <ul class="styled-list reveal-on-scroll">
+                    <li><strong>Real-time performance:</strong> Vision processing must run at minimum 20 Hz for safe navigation</li>
+                    <li><strong>Limited computational resources:</strong> All processing must run on embedded hardware (Raspberry Pi 4)</li>
+                    <li><strong>Weight constraints:</strong> Total payload limited to 200g including camera and compute</li>
+                    <li><strong>Robust detection:</strong> System must handle varying lighting conditions and environments</li>
+                    <li><strong>Safety requirements:</strong> Guaranteed obstacle detection within 2-meter range</li>
+                    <li><strong>Battery life:</strong> Maintain at least 15 minutes of flight time with full system active</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Approach & Design -->
+        <section class="project-section">
+            <div class="container-narrow">
+                <h2 class="reveal-on-scroll">Approach & Design</h2>
+                
+                <h3 class="reveal-on-scroll">System Architecture</h3>
+                <p class="reveal-on-scroll">The system consists of three main subsystems working in parallel:</p>
+                
+                <div class="architecture-diagram reveal-on-scroll">
+                    <!-- Replace with actual system diagram -->
+                    <div class="placeholder-image-rect" aria-label="System architecture diagram">
+                        <svg width="100%" height="100%" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="600" height="300" fill="#f8f8f8"/>
+                            <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">System Architecture Diagram</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <h3 class="reveal-on-scroll">Key Design Decisions</h3>
+                <ul class="styled-list reveal-on-scroll">
+                    <li><strong>Monocular vision approach:</strong> Used single forward-facing camera with depth estimation via optical flow to minimize weight and computational complexity</li>
+                    <li><strong>Hierarchical control:</strong> Separated high-level path planning from low-level attitude control for modularity and easier tuning</li>
+                    <li><strong>PID cascade controller:</strong> Implemented nested PID loops for position and attitude control, providing stability while maintaining computational efficiency</li>
+                    <li><strong>ROS middleware:</strong> Leveraged Robot Operating System for inter-process communication and sensor fusion</li>
+                </ul>
+
+                <h3 class="reveal-on-scroll">Vision Processing Pipeline</h3>
+                <p class="reveal-on-scroll">The computer vision system processes camera frames through the following stages:</p>
+                <ol class="styled-list reveal-on-scroll">
+                    <li>Image acquisition and preprocessing (grayscale conversion, histogram equalization)</li>
+                    <li>Feature extraction using ORB (Oriented FAST and Rotated BRIEF) descriptors</li>
+                    <li>Optical flow computation to estimate depth and relative motion</li>
+                    <li>Obstacle segmentation using adaptive thresholding</li>
+                    <li>Potential field generation for collision avoidance</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Technical Details -->
+        <section class="project-section bg-light">
+            <div class="container-narrow">
+                <h2 class="reveal-on-scroll">Technical Details</h2>
+                
+                <h3 class="reveal-on-scroll">Control System Design</h3>
+                <p class="reveal-on-scroll">The drone's motion is controlled through a cascade PID architecture with the following structure:</p>
+                
+                <div class="code-block reveal-on-scroll">
+                    <pre><code># Simplified PID control structure
+class CascadePIDController:
+    def __init__(self):
+        # Position PIDs (outer loop)
+        self.pid_x = PID(kp=1.5, ki=0.1, kd=0.5)
+        self.pid_y = PID(kp=1.5, ki=0.1, kd=0.5)
+        self.pid_z = PID(kp=2.0, ki=0.15, kd=0.6)
+        
+        # Attitude PIDs (inner loop)
+        self.pid_roll = PID(kp=3.0, ki=0.0, kd=1.0)
+        self.pid_pitch = PID(kp=3.0, ki=0.0, kd=1.0)
+        self.pid_yaw = PID(kp=2.5, ki=0.1, kd=0.8)
+    
+    def compute_control(self, desired_pos, current_pos, current_attitude):
+        # Outer loop: compute desired attitude from position error
+        pos_error = desired_pos - current_pos
+        desired_roll = self.pid_y.update(pos_error.y)
+        desired_pitch = self.pid_x.update(pos_error.x)
+        desired_thrust = self.pid_z.update(pos_error.z)
+        
+        # Inner loop: compute motor commands from attitude error
+        # ... (full implementation)</code></pre>
+                </div>
+
+                <h3 class="reveal-on-scroll">Obstacle Detection Algorithm</h3>
+                <p class="reveal-on-scroll">Obstacles are detected by analyzing the optical flow field. Dense regions of flow vectors indicate nearby objects. The relative depth is estimated using the inverse of flow magnitude:</p>
+                
+                <div class="math-content reveal-on-scroll">
+                    <p><em>Depth estimation:</em> Z ≈ k × f / ||v||</p>
+                    <p>Where Z is depth, f is focal length, ||v|| is flow magnitude, and k is a calibration constant.</p>
+                </div>
+
+                <h3 class="reveal-on-scroll">Performance Optimization</h3>
+                <p class="reveal-on-scroll">To achieve real-time performance on embedded hardware, several optimizations were implemented:</p>
+                <ul class="styled-list reveal-on-scroll">
+                    <li>Reduced image resolution to 640×480 for processing (maintained 1080p logging)</li>
+                    <li>Used multi-threading to parallelize vision and control tasks</li>
+                    <li>Implemented sparse optical flow (Lucas-Kanade) instead of dense flow</li>
+                    <li>Applied region-of-interest masking to ignore floor and sky</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Results & Impact -->
+        <section class="project-section">
+            <div class="container-narrow">
+                <h2 class="reveal-on-scroll">Results & Impact</h2>
+                
+                <div class="results-grid reveal-on-scroll">
+                    <div class="result-card">
+                        <div class="result-number">95%</div>
+                        <div class="result-label">Obstacle Detection Success Rate</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-number">23 Hz</div>
+                        <div class="result-label">Average Processing Frequency</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-number">18 min</div>
+                        <div class="result-label">Average Flight Time</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-number">0.15 m</div>
+                        <div class="result-label">Position Hold Accuracy (RMS)</div>
+                    </div>
+                </div>
+
+                <h3 class="reveal-on-scroll">Key Outcomes</h3>
+                <ul class="styled-list reveal-on-scroll">
+                    <li>Successfully demonstrated autonomous navigation through obstacle course with 95% success rate across 50 test flights</li>
+                    <li>Achieved real-time performance (23 Hz average) on embedded Raspberry Pi 4 hardware</li>
+                    <li>Maintained stable flight with position hold accuracy within 15cm RMS error</li>
+                    <li>System proved robust to varying lighting conditions (tested from 100 to 1000 lux)</li>
+                    <li>Exceeded battery life requirement with 18-minute average flight duration</li>
+                </ul>
+
+                <h3 class="reveal-on-scroll">Project Impact</h3>
+                <p class="reveal-on-scroll">The system demonstrated that effective autonomous navigation can be achieved using lightweight, low-cost sensors and embedded computation. Results were presented at the university's annual engineering symposium and are being considered for publication. The modular software architecture has been adopted by the university's robotics lab for future UAV projects.</p>
+            </div>
+        </section>
+
+        <!-- Images Gallery -->
+        <section class="project-section bg-light">
+            <div class="container">
+                <h2 class="reveal-on-scroll">Project Gallery</h2>
+                <div class="image-gallery">
+                    <div class="gallery-item reveal-on-scroll">
+                        <!-- Replace with actual project photos -->
+                        <div class="placeholder-image-rect" aria-label="Drone hardware setup">
+                            <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="300" fill="#f0f0f0"/>
+                                <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Drone Hardware</text>
+                            </svg>
+                        </div>
+                        <p class="gallery-caption">Complete drone platform with camera and compute payload</p>
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <div class="placeholder-image-rect" aria-label="System architecture">
+                            <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="300" fill="#f0f0f0"/>
+                                <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Software Architecture</text>
+                            </svg>
+                        </div>
+                        <p class="gallery-caption">ROS node graph showing system components</p>
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <div class="placeholder-image-rect" aria-label="Obstacle detection visualization">
+                            <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="300" fill="#f0f0f0"/>
+                                <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Detection Visualization</text>
+                            </svg>
+                        </div>
+                        <p class="gallery-caption">Real-time obstacle detection and avoidance vectors</p>
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <div class="placeholder-image-rect" aria-label="Test flight trajectory">
+                            <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="300" fill="#f0f0f0"/>
+                                <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Flight Trajectory</text>
+                            </svg>
+                        </div>
+                        <p class="gallery-caption">3D trajectory plot from successful autonomous flight</p>
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <div class="placeholder-image-rect" aria-label="Control performance graph">
+                            <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="300" fill="#f0f0f0"/>
+                                <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Control Response</text>
+                            </svg>
+                        </div>
+                        <p class="gallery-caption">PID controller step response showing settling time</p>
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <div class="placeholder-image-rect" aria-label="Field testing">
+                            <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="300" fill="#f0f0f0"/>
+                                <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="16">Field Testing</text>
+                            </svg>
+                        </div>
+                        <p class="gallery-caption">Outdoor flight testing in obstacle course environment</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="project-section">
+            <div class="container-narrow">
+                <h2 class="reveal-on-scroll">Reflection & Learnings</h2>
+                
+                <h3 class="reveal-on-scroll">What I Learned</h3>
+                <ul class="styled-list reveal-on-scroll">
+                    <li><strong>Systems integration is challenging:</strong> Getting hardware, vision algorithms, and control systems to work together reliably required careful debugging and system-level thinking</li>
+                    <li><strong>Real-time constraints matter:</strong> Theoretical algorithms often need significant optimization for embedded deployment</li>
+                    <li><strong>Testing is crucial:</strong> Extensive simulation in Gazebo caught many edge cases before expensive hardware testing</li>
+                    <li><strong>Documentation pays off:</strong> Maintaining detailed logs and documentation enabled rapid troubleshooting during integration</li>
+                    <li><strong>Control theory fundamentals:</strong> Deepened understanding of PID tuning, stability analysis, and practical controller implementation</li>
+                </ul>
+
+                <h3 class="reveal-on-scroll">Future Improvements</h3>
+                <ul class="styled-list reveal-on-scroll">
+                    <li>Implement SLAM (Simultaneous Localization and Mapping) for better long-term navigation and path planning</li>
+                    <li>Upgrade to stereo vision for more accurate depth estimation</li>
+                    <li>Explore model predictive control (MPC) for more optimal trajectory planning</li>
+                    <li>Add machine learning-based object recognition to distinguish obstacle types</li>
+                    <li>Improve robustness in outdoor environments with wind disturbance compensation</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation to Other Projects -->
+        <section class="project-navigation">
+            <div class="container">
+                <a href="projects.html" class="back-to-projects">← Back to All Projects</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Your Name Here. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">LinkedIn</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
