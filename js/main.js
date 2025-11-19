@@ -94,28 +94,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // Function to check if element is in viewport
         function isInViewport(element) {
             const rect = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            
+            // Element is visible if any part of it is in viewport
             return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + 100 &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                rect.top <= windowHeight - 50 && // Element top is above bottom of screen (with 50px buffer)
+                rect.bottom >= 0 // Element bottom is below top of screen
             );
         }
         
         // Function to reveal elements
         function revealOnScroll() {
-            revealElements.forEach((element, index) => {
+            let delay = 0;
+            revealElements.forEach((element) => {
                 if (isInViewport(element) && !element.classList.contains('revealed')) {
-                    // Add delay based on index for stagger effect
+                    // Add stagger delay only for elements being revealed together
                     setTimeout(() => {
                         element.classList.add('revealed');
-                    }, index * 50);
+                    }, delay);
+                    delay += 50; // Stagger by 50ms
                 }
             });
         }
         
-        // Initial check on page load
-        revealOnScroll();
+        // Initial check on page load (with slight delay to ensure page is rendered)
+        setTimeout(() => {
+            revealOnScroll();
+        }, 100);
         
         // Check on scroll with throttling for performance
         let scrollTimeout;
@@ -127,6 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 revealOnScroll();
             });
         });
+        
+        // Also check on page resize (in case viewport changes)
+        window.addEventListener('resize', debounce(revealOnScroll, 200));
     }
 });
 
@@ -165,52 +173,66 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===========================
-// Form Validation (Optional Enhancement)
+// Contact Form AJAX Submission
 // ===========================
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.querySelector('.contact-form');
+    const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            // Basic client-side validation
-            const name = document.getElementById('name');
-            const email = document.getElementById('email');
-            const message = document.getElementById('message');
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevent default form submission
             
-            let isValid = true;
+            const submitBtn = document.getElementById('submit-btn');
+            const submitText = document.getElementById('submit-text');
+            const formStatus = document.getElementById('form-status');
+            const formData = new FormData(contactForm);
             
-            // Check if required fields are filled
-            if (name && name.value.trim() === '') {
-                isValid = false;
-                name.style.borderColor = '#ef4444';
-            } else if (name) {
-                name.style.borderColor = '';
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitText.textContent = 'Sending...';
+            formStatus.style.display = 'none';
+            
+            try {
+                // Submit form via AJAX
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success!
+                    formStatus.style.display = 'block';
+                    formStatus.style.backgroundColor = '#d1fae5';
+                    formStatus.style.color = '#065f46';
+                    formStatus.style.border = '1px solid #10b981';
+                    formStatus.innerHTML = '✓ Message sent successfully! I\'ll get back to you soon.';
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Reset button after delay
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitText.textContent = 'Send Message';
+                    }, 2000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Error occurred
+                formStatus.style.display = 'block';
+                formStatus.style.backgroundColor = '#fee2e2';
+                formStatus.style.color = '#991b1b';
+                formStatus.style.border = '1px solid #ef4444';
+                formStatus.innerHTML = '✗ Oops! There was a problem sending your message. Please try again or email me directly.';
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitText.textContent = 'Send Message';
             }
-            
-            if (email && email.value.trim() === '') {
-                isValid = false;
-                email.style.borderColor = '#ef4444';
-            } else if (email) {
-                email.style.borderColor = '';
-            }
-            
-            if (message && message.value.trim() === '') {
-                isValid = false;
-                message.style.borderColor = '#ef4444';
-            } else if (message) {
-                message.style.borderColor = '';
-            }
-            
-            // If form is invalid, prevent submission
-            if (!isValid) {
-                e.preventDefault();
-                alert('Please fill in all required fields.');
-            }
-            
-            // Note: For actual email sending, you'll need to:
-            // 1. Set up a backend service (PHP, Node.js, etc.)
-            // 2. Use a service like Formspree, Netlify Forms, or EmailJS
-            // 3. Update the form action attribute with your endpoint
         });
     }
 });

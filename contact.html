@@ -140,7 +140,7 @@
                         
                         <!-- Note: This form needs backend integration for actual email sending -->
                         <!-- You can use services like Formspree, Netlify Forms, or your own backend -->
-                        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <form class="contact-form" action="https://formspree.io/f/xqanewkl" method="POST">
                             <div class="form-group">
                                 <label for="name">Name <span class="required">*</span></label>
                                 <input type="text" id="name" name="name" required placeholder="Your full name">
@@ -161,15 +161,17 @@
                                 <textarea id="message" name="message" required rows="6" placeholder="Tell me about your opportunity, question, or how I can help..."></textarea>
                             </div>
 
-                            <button type="submit" class="submit-button">
+                            <button type="submit" class="submit-button" id="submit-btn">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <line x1="22" y1="2" x2="11" y2="13"></line>
                                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                                 </svg>
-                                Send Message
+                                <span id="submit-text">Send Message</span>
                             </button>
 
                             <p class="form-note">* Required fields</p>
+
+                            <div id="form-status" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 8px;"></div>
                         </form>
                     </div>
                 </div>

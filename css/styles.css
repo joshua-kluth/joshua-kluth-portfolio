@@ -316,6 +316,18 @@ main {
     color: white;
 }
 
+.submit-button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.submit-button:disabled:hover {
+    background-color: #9ca3af;
+    transform: none;
+}
+
 .cta-button-secondary {
     display: inline-flex;
     align-items: center;
